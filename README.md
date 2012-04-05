@@ -1,3 +1,9 @@
+# Nothing to see here
+
+Move along...
+
+P.S. If you want some presenters for your ActiveRecords, use [draper](https://github.com/jcasimir/draper), it's awesome.
+
 # Exhibitionist
 
 TODO: Write a gem description
