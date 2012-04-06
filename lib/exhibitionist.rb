@@ -1,5 +1,5 @@
 require "exhibitionist/version"
+require 'exhibitionist/base'
 
 module Exhibitionist
-  # Your code goes here...
 end
