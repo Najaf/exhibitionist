@@ -1,5 +1,5 @@
 require 'delegate'
 module Exhibitionist
-  class Base < ::SimpleDelegator
+  class Base < SimpleDelegator
   end
 end
