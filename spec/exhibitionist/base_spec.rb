@@ -34,5 +34,10 @@ describe Exhibitionist::Base do
     double_exhibit.say('meow').must_equal 'Ummm... MEOW'
   end
 
+  describe '#class' do
+    it 'returns the class of the wrapped object' do
+      double_exhibit.class.must_equal Speaker
+    end
+  end
 
 end
