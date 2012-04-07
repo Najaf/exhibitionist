@@ -1,17 +1,7 @@
 require 'spec_helper'
+require 'test_exhibits/shout_exhibit'
+require 'test_exhibits/stutter_exhibit'
 describe Exhibitionist::Base do
-
-  class ShoutExhibit < Exhibitionist::Base
-    def say(string)
-      __getobj__.say(string).upcase
-    end
-  end
-
-  class StutterExhibit < Exhibitionist::Base
-    def say(string)
-      "Ummm... #{__getobj__.say(string)}"
-    end
-  end
 
   class Speaker
     def say(string)
@@ -20,9 +10,7 @@ describe Exhibitionist::Base do
   end
 
   let(:bare) { Speaker.new }
-
   let(:exhibit) { ShoutExhibit.new(bare) }
-
   let(:double_exhibit) { StutterExhibit.new(exhibit) }
 
   it 'decorates methods' do
