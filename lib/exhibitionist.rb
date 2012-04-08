@@ -18,6 +18,11 @@ module Exhibitionist
       nil
     end
 
+    #def register_dir(directory)
+      #raise Exhibitionist::Base.subclasses.inspect
+      #File.expand_path(directory)
+    #end
+
     def exhibit(object)
       @@exhibits.reduce object do |object, exhibit|
         exhibit.exhibit_if_applicable(object)

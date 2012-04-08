@@ -60,4 +60,11 @@ describe Exhibitionist do
       possible.must_include wrapped.say('meow')
     end
   end
+
+  #describe '.register_dir' do
+    #it 'registers all the exhibits in a directory' do
+      #Exhibitionist.register_dir 'test_exhibits'
+      #Exhibitionist.exhibits.must_equal [EmptyExhibit, ShoutExhibit, StutterExhibit, WhisperExhibit]
+    #end
+  #end
 end
