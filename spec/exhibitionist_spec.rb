@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'test_exhibits/shout_exhibit'
 require 'test_exhibits/stutter_exhibit'
+require 'test_exhibits/whisper_exhibit'
 
 describe Exhibitionist do
 
@@ -49,6 +50,14 @@ describe Exhibitionist do
       Exhibitionist.register StutterExhibit
       wrapped = Exhibitionist.exhibit(speaker)
       wrapped.say('woof').must_equal('Ummm... woof')
+    end
+
+    it 'wraps multiple registered exhibits, if applicable' do
+      Exhibitionist.register ShoutExhibit, StutterExhibit, WhisperExhibit
+      wrapped = Exhibitionist.exhibit(speaker)
+      # we make no assumptions about order, so it could be either of the following
+      possible = ['<whisper>Ummm... meow</whisper>', 'Ummm... <whisper>meow</whisper>']
+      possible.must_include wrapped.say('meow')
     end
   end
 end

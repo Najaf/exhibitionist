@@ -19,11 +19,8 @@ module Exhibitionist
     end
 
     def exhibit(object)
-      if @@exhibits.empty?
-        return object
-      else
-        exhibit = @@exhibits.first
-        return exhibit.applicable_to?(object) ? exhibit.new(object) : object
+      @@exhibits.reduce object do |object, exhibit|
+        exhibit.exhibit_if_applicable(object)
       end
     end
   end
