@@ -5,8 +5,8 @@ Gem::Specification.new do |gem|
   gem.authors       = ["Najaf Ali"]
   gem.email         = ["ali.najaf@gmail.com"]
   gem.description   = %q{A simple, framework-agnostic implementation of the decorator pattern, inspired by Avdi Grimms exhibits in 'objects on rails'.}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = "https://github.com/Najaf/exhibitionist"
+  gem.summary       = gem.description
+  gem.homepage      = "http://github.com/Najaf/exhibitionist"
 
   %w( minitest-reporters ).each do |dep|
     gem.add_development_dependency  dep
