@@ -24,20 +24,64 @@ Or install it yourself as:
 
 ## Usage
 
-```ruby
-class ShoutExhibit < Exhibitionist::Base
-  applies_if {|object| object.responds_to?(:to_s) }
+An Exhibit is just a subclass of SimpleDelegator, organized via the Exhibitionist module.
 
+Create exhibits by subclassing ```Exhibitionist::Base``:
+
+```ruby
+class StringExhibit < Exhibitionist::Base
+  applies_if {|object| object.responds_to?(:to_s) }
+end
+```
+
+Here are some example exhibits. As they inherit from StringExhibit, they all apply to objects that respond to :to_s
+
+```ruby
+class ShoutExhibit < StringExhibit
   def shout
     __getobj__.to_s.upcase
   end
 end
 
-Exhibitionist.register ShoutExhibit
+class WhisperExhibit < StringExhibit
+  def whisper
+    "<whisper>#{__getobj__.to_s.downcase}</whisper>"
+  end
+end
 
-exhibit = Exhibitionist.exhibit "hello, world"
+class ExclaimExhibit < StringExhibit
+  def exclaim
+    "#{__getobj__.to_s}!"
+  end
+end
+```
 
-exhibit.shout #=> "HELLO, WORLD"
+Another exhibit, that applies to nothing:
+
+```ruby
+class NeverAppliedExhibit < Exhibitionist::Base
+  applies_if { |object| false }
+
+  def boom
+    "#{__getobj__.to_s} shakalaka"
+  end
+end
+```
+
+Register all your exhibits with the ```Exhibitionist``` module:
+
+```ruby
+Exhibitionist.register ShoutExhibit, WhisperExhibit, ExclaimExhibit, NeverAppliedExhibit
+```
+
+Now calling ```Exhibitionist.exhibit(obj)``` will get you your object, wrapped with
+
+exhibit = Exhibitionist.exhibit "Hello, world"
+
+exhibit.shout   #=> "HELLO, WORLD"
+exhibit.whisper #=> "<whisper>hello, world</whisper>"
+exhibit.exlaim  #=> "Hello, world!"
+exhibit.boom    #=> NoMethodError, as NeverAppliedExhibit applies to nothing
 ```
 
 ## Contributing
