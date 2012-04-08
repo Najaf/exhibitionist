@@ -79,10 +79,10 @@ Now calling ```Exhibitionist.exhibit(obj)``` will get you your object, wrapped w
 ```ruby
 exhibit = Exhibitionist.exhibit "Hello, world"
 
-exhibit.shout   #=> "HELLO, WORLD"
-exhibit.whisper #=> "<whisper>hello, world</whisper>"
-exhibit.exlaim  #=> "Hello, world!"
-exhibit.boom    #=> NoMethodError, as NeverAppliedExhibit applies to nothing
+exhibit.shout            #=> "HELLO, WORLD"
+exhibit.whisper          #=> "<whisper>hello, world</whisper>"
+exhibit.exclaim          #=> "Hello, world!"
+exhibit.boom             #=> NoMethodError, as NeverAppliedExhibit applies to nothing
 ```
 
 ## Contributing
