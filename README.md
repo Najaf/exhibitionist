@@ -74,8 +74,9 @@ Register all your exhibits with the ```Exhibitionist``` module:
 Exhibitionist.register ShoutExhibit, WhisperExhibit, ExclaimExhibit, NeverAppliedExhibit
 ```
 
-Now calling ```Exhibitionist.exhibit(obj)``` will get you your object, wrapped with
+Now calling ```Exhibitionist.exhibit(obj)``` will get you your object, wrapped with applicable exhibits.
 
+```ruby
 exhibit = Exhibitionist.exhibit "Hello, world"
 
 exhibit.shout   #=> "HELLO, WORLD"
