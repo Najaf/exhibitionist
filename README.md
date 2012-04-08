@@ -1,12 +1,7 @@
-# Nothing to see here
-
-Move along...
-
-P.S. If you want some presenters for your ActiveRecords, use [draper](https://github.com/jcasimir/draper), it's awesome.
 
 # Exhibitionist
 
-Super-lightweight decorators.
+Super-lightweight decorators, as inspired by Avdi Grimms [Objects on Rails](http://objectsonrails.com/).
 
 ## Installation
 
@@ -30,11 +25,12 @@ Create exhibits by subclassing ```Exhibitionist::Base``:
 
 ```ruby
 class StringExhibit < Exhibitionist::Base
+  # this exhibit applies to objects that respond to :to_s
   applies_if {|object| object.responds_to?(:to_s) }
 end
 ```
 
-Here are some example exhibits. As they inherit from StringExhibit, they all apply to objects that respond to :to_s
+Here are some example exhibits.
 
 ```ruby
 class ShoutExhibit < StringExhibit
@@ -82,7 +78,7 @@ exhibit = Exhibitionist.exhibit "Hello, world"
 exhibit.shout            #=> "HELLO, WORLD"
 exhibit.whisper          #=> "<whisper>hello, world</whisper>"
 exhibit.exclaim          #=> "Hello, world!"
-exhibit.boom             #=> NoMethodError, as NeverAppliedExhibit applies to nothing
+exhibit.boom             #=> NoMethodError, as object is not wrapped by NeverAppliedExhibit
 ```
 
 ## Contributing
@@ -92,3 +88,4 @@ exhibit.boom             #=> NoMethodError, as NeverAppliedExhibit applies to no
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
