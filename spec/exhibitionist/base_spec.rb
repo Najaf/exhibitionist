@@ -47,4 +47,28 @@ describe Exhibitionist::Base do
       exhibited.say('growl').must_equal 'Ummm... growl'
     end
   end
+
+  describe '.applies_if' do
+    it 'can be called in definitions of subclasses of Exhibitionist::Base' do
+      class TestExhibit < Exhibitionist::Base
+        applies_if {}
+      end
+    end
+
+    it 'takes a lambda that is evaluated to determine whether it is applicable to a given object' do
+      class AnotherTestExhibit < Exhibitionist::Base
+        applies_if { |object| object.class == Speaker }
+      end
+      AnotherTestExhibit.applicable_to?(bare).must_equal true
+    end
+  end
+
+  describe '.applies_unless' do
+    it 'does the opposite of .applies_if' do
+      class YetAnotherTestExhibit < Exhibitionist::Base
+        applies_unless { |object| object.class == Speaker }
+      end
+      YetAnotherTestExhibit.applicable_to?(bare).must_equal false
+    end
+  end
 end
