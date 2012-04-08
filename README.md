@@ -6,7 +6,7 @@ P.S. If you want some presenters for your ActiveRecords, use [draper](https://gi
 
 # Exhibitionist
 
-TODO: Write a gem description
+Super-lightweight decorators.
 
 ## Installation
 
@@ -24,7 +24,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    ```ruby
+    class ShoutExhibit < Exhibitionist::Base
+      applies_if {|object| object.responds_to?(:to_s) }
+
+      def shout
+        __getobj__.to_s.upcase
+      end
+    end
+
+    Exhibitionist.register ShoutExhibit
+
+    exhibit = Exhibitionist.exhibit "hello, world"
+
+    exhibit.shout #=> "HELLO, WORLD"
+    ```
 
 ## Contributing
 
