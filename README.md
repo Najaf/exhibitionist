@@ -24,21 +24,21 @@ Or install it yourself as:
 
 ## Usage
 
-    ```ruby
-    class ShoutExhibit < Exhibitionist::Base
-      applies_if {|object| object.responds_to?(:to_s) }
+```ruby
+class ShoutExhibit < Exhibitionist::Base
+  applies_if {|object| object.responds_to?(:to_s) }
 
-      def shout
-        __getobj__.to_s.upcase
-      end
-    end
+  def shout
+    __getobj__.to_s.upcase
+  end
+end
 
-    Exhibitionist.register ShoutExhibit
+Exhibitionist.register ShoutExhibit
 
-    exhibit = Exhibitionist.exhibit "hello, world"
+exhibit = Exhibitionist.exhibit "hello, world"
 
-    exhibit.shout #=> "HELLO, WORLD"
-    ```
+exhibit.shout #=> "HELLO, WORLD"
+```
 
 ## Contributing
 
